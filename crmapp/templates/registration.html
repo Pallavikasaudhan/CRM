@@ -1,0 +1,112 @@
+{% extends "parent.html" %}
+{% block main %}
+<div class="row">
+    {% load static %}
+   <div style="display: block; width:100%; height:100%; margin-top: 10px;"><img src="{% static 'images/bg3.jpg' %}" width="1120px" alt="image"></div>
+<div style="position: absolute;width: 900px;margin-left: 150px; margin-top: 70px;">
+<script>
+    function validate()
+    {
+        var name=document.getElementById("name");
+        var address=document.getElementById("address");
+        var contactno=document.getElementById("contactno");
+        var emailaddress=document.getElementById("emailaddress");
+        var password=document.getElementById("password");
+        var confirmpassword=document.getElementById("confirmpassword");
+        if(name.value=="" || name.value==null)
+        {
+            alert("Please enter name");
+            name.focus();
+        }
+        else if(address.value=="" || address.value==null)
+        {
+            alert("Please enter address");
+            address.focus();
+        }
+        else if(contactno.value=="" || contactno.value==null)
+        {
+            alert("Please enter contactno");
+            contactno.focus();
+        }
+        else if(emailaddress.value=="" || emailaddress.value==null)
+        {
+            alert("Please enter emailaddress");
+            emailaddress.focus();
+        }
+        else if(password.value=="" || password.value==null)
+        {
+            alert("Please enter password");
+            password.focus();
+        }
+        else if(confirmpassword.value=="" || confirmpassword.value==null)
+        {
+            alert("Please enter confirmpassword");
+            confirmpassword.focus();
+        }
+        else
+        {
+            document.getElementById("frmlogin").submit();
+        }
+    }
+</script>
+
+<form class="form-group" action="{%url 'crmapp:registration'%}" method="post" id="frmlogin" onsubmit="event.preventDefault();validate();">
+    {% csrf_token %}
+    <h2 style="text-align: center;text-shadow: 2px 2px 0 black; color: white; ">User Registration Form</h2>
+    {%if msg%}
+   <p style="text-align: center;">{{msg}}</p>
+   {%endif%} 
+<table class="table" style="margin: auto;">
+<tr>
+    <td>Enter Name</td>
+    <td>
+        <input type="text" id="name" name="name" class="form-control" placeholder="Enter Name"/>
+    </td>
+</tr>
+<tr>
+    <td>Select Gender</td>
+    <td>
+       <input type="radio" name="gender"  value="m"/>Male
+      <input type="radio" name="gender" value="f"/>Female
+    </td>
+</tr>
+<tr>
+    <td>Enter Address</td>
+    <td>
+        <textarea maxlength="80" id="address" name="address" class="form-control"></textarea>
+    </td>
+</tr>
+<tr>
+    <td>Enter Contact No</td>
+    <td> 
+        <input type="number" id="contactno" name="contactno" class="form-control" placeholder="Enter Contact No"/>
+</td>
+</tr>
+<tr>
+    <td>Enter Email Address</td>
+    <td> 
+        <input type="email" id="emailaddress" name="emailaddress" class="form-control" placeholder="Enter Email Address"/>
+</td>
+</tr>
+<tr>
+    <td>Enter Password</td>
+    <td> 
+        <input type="password" id="password" name="password" class="form-control" placeholder="Password"/>
+</td>
+</tr>
+<tr>
+    <td>Confirm Password</td>
+    <td> 
+        <input type="password" id="confirmpassword" name="confirmpassword" class="form-control" placeholder="Confirm Password"/>
+</td>
+</tr>
+<tr>
+    <td></td>
+<td>
+    <button type="submit"  class="btn btn-danger">Registration</button>
+</td>
+</tr>
+</table>
+
+</form></div>
+{% endblock main %}

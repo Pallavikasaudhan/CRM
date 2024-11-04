@@ -1,0 +1,105 @@
+{% extends "parent.html" %}
+{% block main %}
+<div class="row bg-danger" style="width: cover; height: 100%;margin-top: 10px;" >
+    <div class="col-sm-6" style="margin: auto;">
+        <h2 style="text-align: center;color:black;font-weight: bolder;">Get In Touch</h2>
+        
+            <h6><i class="fa-solid fa-location-dot"></i>Address:</h6>
+            <p>78, I.D.C. Mahrauli Road, Gurugram, Haryana-122001</p>
+            <h6><i class="fa-solid fa-phone"></i>Phone:</h6>
+            <p>18008892101</p>
+            <h6><i class="fa-solid fa-mobile-screen-button"></i>Mobile:</h6>
+            <p>+919076608818, +918081343990</p>
+            <h6><i class="fa-solid fa-envelope"></i>Email</h6>
+            <p>info@marccure.com</p>
+            <h6><i class="fa-solid fa-link"></i>Website</h6>
+            <p>www.marccure.com</p>
+        
+
+        </div>
+    <div class="col-sm-6" style="margin: auto;">
+<script>
+    function validate()
+    {
+        var name=document.getElementById("name");
+        var contactno=document.getElementById("contactno");
+        var emailaddress=document.getElementById("emailaddress");
+        var subject=document.getElementById("subject");
+        var message=document.getElementById("message");
+        if(name.value==""|| name.value==null)
+        {
+            alert("Please enter name");
+            name.focus();
+        }
+        else if(contactno.value=="" || contactno.value==null)
+        {
+            alert("Please enter contactno");
+            contactno.focus();
+        }
+        else if(emailaddress.value=="" || emailaddress.value==null)
+        {
+            alert("Please enter emailaddress");
+            emailaddress.focus();
+        }
+        else if(subject.value=="" || subject.value==null)
+        {
+            alert("Please enter subject");
+            subject.focus();
+        }
+        else if(message.value=="" || message.value==null)
+        {
+            alert("Please enter message");
+            message.focus();
+        }
+        else
+        {
+            document.getElementById("frmlogin").submit();
+        }
+    }
+</script>
+<h2 style="text-align: center; font-weight: bolder;">Enquiry Form</h2>
+{% if msg %}
+     <p style="color: green; text-align: center;">{{msg}}</p>
+{% endif %}
+<form class="form-group" method="post"  id="frmlogin" onsubmit="event.preventDefault();validate();">
+    {% csrf_token %}
+    <table class="table" style="width: 90%; margin: auto;">
+    <tr>
+        <td>Enter Name</td>
+        <td>
+            <input type="text" id="name" name="name" class="form-control"/>
+        </td>
+    </tr>
+    <tr>
+        <td>Enter Contact No</td>
+        <td>
+            <input type="number" id="contactno" name="contactno" class="form-control"/>
+        </td>
+    </tr>
+    <tr>
+        <td>Enter Email Address</td>
+        <td>
+            <input type="email" id="emailaddress" name="emailaddress" class="form-control"/>
+        </td>
+    </tr>
+    <tr>
+        <td>Enter Subject</td>
+        <td>
+            <input type="text" id="subject" name="subject" class="form-control"/>
+        </td>
+    </tr>
+    <tr>
+        <td>Enter Message</td>
+        <td>
+            <textarea name="message" id="message" class="form-control"></textarea>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>
+            <button type="submit" class="btn btn-danger">Submit</button>
+        </td>
+    </tr>
+    </table>
+    </form></div></div>
+{% endblock main %}
